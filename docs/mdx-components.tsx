@@ -31,6 +31,7 @@ import { FileBuildup } from '@/components/file-buildup';
 import { RepoBrowser } from '@/components/repo-browser';
 import { ImessageRepoBrowser } from '@/components/imessage-repo-browser';
 import { ImessageFileBuildup } from '@/components/imessage-file-buildup';
+import { ImessageFlow } from '@/components/imessage-flow';
 import { WorkbenchFlow } from '@/components/workbench-flow';
 import { AuthConfigFlow } from '@/components/auth-config-flow';
 import { WhiteLabelFlow } from '@/components/white-label-flow';
@@ -124,6 +125,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     RepoBrowser,
     ImessageRepoBrowser,
     ImessageFileBuildup,
+    ImessageFlow,
     WorkbenchFlow,
     AuthConfigFlow,
     WhiteLabelFlow,
