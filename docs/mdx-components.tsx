@@ -123,6 +123,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     FileBuildup,
     RepoBrowser,
     ImessageRepoBrowser,
+    ImessageFileBuildup,
     WorkbenchFlow,
     AuthConfigFlow,
     WhiteLabelFlow,
