@@ -59,6 +59,7 @@ minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - '@composio/client'
   - chrome-devtools-mcp
+  - eve
 
 overrides:
   qs@<6.14.1: '>=6.14.1'
