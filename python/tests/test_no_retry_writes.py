@@ -116,7 +116,7 @@ class TestStainlessCopyContract:
     def test_with_options_is_aliased_to_our_copy_override(self) -> None:
         # The base binds `with_options = copy` at class-definition time, so the
         # subclass must re-alias it to the override that re-injects `provider`.
-        assert HttpClient.with_options is HttpClient.copy
+        assert HttpClient.__dict__["with_options"] is HttpClient.__dict__["copy"]
 
 
 class TestWritePathDoesNotRetry:

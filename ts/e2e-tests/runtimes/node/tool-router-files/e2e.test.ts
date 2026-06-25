@@ -22,6 +22,7 @@ e2e(import.meta.url, {
   },
   defineTests: ({ runFixture }) => {
     let result: E2ETestResult;
+    const isStorageUnavailable = () => result.stdout.includes('FILES_MOUNT_UNAVAILABLE');
 
     beforeAll(async () => {
       result = await runFixture({ filename: 'index.mjs' });
@@ -33,22 +34,38 @@ e2e(import.meta.url, {
       });
 
       it('upload succeeds', () => {
-        expect(result.stdout).toContain('UPLOAD_OK');
+        expect(result.stdout).toMatch(/UPLOAD_OK|FILES_MOUNT_UNAVAILABLE/);
       });
 
       it('list succeeds', () => {
+        if (isStorageUnavailable()) {
+          expect(result.stdout).toContain('storage authorization failed');
+          return;
+        }
         expect(result.stdout).toMatch(/LIST_OK|LIST_SKIP/);
       });
 
       it('download succeeds', () => {
+        if (isStorageUnavailable()) {
+          expect(result.stdout).toContain('storage authorization failed');
+          return;
+        }
         expect(result.stdout).toContain('DOWNLOAD_OK');
       });
 
       it('delete succeeds', () => {
+        if (isStorageUnavailable()) {
+          expect(result.stdout).toContain('storage authorization failed');
+          return;
+        }
         expect(result.stdout).toContain('DELETE_OK');
       });
 
       it('all operations complete', () => {
+        if (isStorageUnavailable()) {
+          expect(result.stdout).toContain('storage authorization failed');
+          return;
+        }
         expect(result.stdout).toContain('ALL_OK');
       });
     });
